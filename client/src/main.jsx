@@ -5,11 +5,14 @@ import { store } from "./store/store";
 import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./routes";
+import CartContextComponent from "./Components/CartContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <CartContextComponent>
+        <RouterProvider router={router} />
+      </CartContextComponent>
     </Provider>
   </React.StrictMode>
 );

@@ -1,56 +1,47 @@
 import { useEffect } from "react";
 import { useLoginMutation } from "../store/service/userService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Header from "../Components/Header";
+
 
 const Login = () => {
-  const [login, { error, data }] = useLoginMutation();
+  const [login, { error, data: loginResponseData }] = useLoginMutation();
   const navigate = useNavigate();
 
-  
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
-  const submit = (formData) => login(formData);
-  console.log("🚀 ~ file: Login.jsx:19 ~ Login ~ submit", submit)
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const email = e.target.email.value;
-  //   const password = e.target.password.value;
-  //   login({
-  //     email,
-  //     password,
-  //   });
-  // };
+  const submit = (formData) => {
+    login(formData);
+  };
 
   useEffect(() => {
-    if (data) navigate("/");
-  }, [data]);
-  // console.log(watch("email"));
+    if (loginResponseData) {
+      navigate("/");
+    }
+  }, [loginResponseData]);
 
   return (
-    <>
+    <div className="flex h-[100%] w-[100%]content-center justify-center">
+      <Header></Header>
       <form
         onSubmit={handleSubmit(submit)}
         className="w-3/6 flex flex-col w-full h-full justify-center items-center gap-7"
       >
         <input
           type="text"
-           defaultValue="pedlo"
-          {...register("email", {
+          defaultValue=""
+          {...register("authName", {
             required: true,
             minLength: 4,
-            maxLength: 20,
-            // pattern:
-            //   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i,
+            maxLength: 50,
           })}
-          placeholder="Email"
-          className=" w-full rounded h-14"
+          placeholder="Username or Email"
+          className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[50vw] text-rtgreen uppercase"
         />
         {errors?.email?.type === "pattern" && <p>Pone un email con onda</p>}
         {errors?.email?.type === "required" && (
@@ -66,12 +57,16 @@ const Login = () => {
           type="password"
           {...register("password")}
           placeholder="Password"
-          className=" w-full rounded h-14"
+          className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[50vw] text-rtgreen uppercase"
         />
-        <button className="hidden">enviar</button>
+        <div className="flex bg-rtgreen h-8 w-20 justify-center">
+        <button className="text-white font-archivo-black text-sm font-work-sans font-bold uppercase">
+          enviar
+        </button>
+        </div>
       </form>
       {error && <p>{error.data.message}</p>}
-    </>
+    </div>
   );
 };
 

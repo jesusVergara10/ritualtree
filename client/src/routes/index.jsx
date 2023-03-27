@@ -2,15 +2,16 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Isadmin from "../Components/Isadmin";
 import AlbumDisplay from "../views/AlbumDisplay";
-import AllProducts from "../views/AllProducts";
 import Cart from "../views/Cart";
-import CreateProduct from "../views/CreateProduct";
-import DeleteProduct from "../views/DeleteProduct";
 import Home from "../views/Home";
 import Info from "../views/Info";
 import Login from "../views/Login";
 import Register from "../views/Register";
 import Shop from "../views/Shop";
+import Search from "../views/Search";
+import EditProfile from "../views/EditProfile";
+import ProductManagment from "../views/ProductManagment";
+import CategoryManagment from "../views/CategoryManagment";
 
 const router = createBrowserRouter([
   {
@@ -18,61 +19,48 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/home",
-        element: <Home />,
+        path: "/shop",
+        element: <Shop />,
       },
       {
-        path: "/products",
-        element: <AllProducts />,
+        path: "/cart",
+        element: <Cart />,
       },
       {
-        path:"/shop",
-        element: <Shop/>
-      },
-      {
-        path:"/albuminfo",
-        element: <AlbumDisplay/>
-      },
-      {
-        path:"/cart",
-        element: <Cart/>
-      },
-      {
-        path:"/info",
-        element: <Info/>
-      },
-      //   {
-      //     path: "/admin/createproduct",
-      //     element: (
-      //       <Isadmin>
-      //         <CreateProduct />
-      //       </Isadmin>
-      //     ),
-      //   },
-      //   {
-      //     path: "admin/deleteproduct",
-      //     element: (
-      //       <Isadmin>
-      //         <DeleteProduct />
-      //       </Isadmin>
-      //     ),
-      //   },
-
-      {
-        path: "admin",
+        path: "/admin",
         element: <Isadmin />,
         children: [
           {
-            path: "createproduct",
-            element: <CreateProduct />,
+            path: "productmanagment",
+            element: <ProductManagment />,
           },
           {
-            path: "deleteproduct",
-            element: <DeleteProduct />,
+            path: "categorymanagment",
+            element: <CategoryManagment />,
           },
         ],
       },
     ],
+  },
+  {
+    path: "/editprofile",
+    element: <EditProfile />,
+  },
+  {
+    path: "/album",
+    element: <AlbumDisplay />,
+  },
+  {
+    path: "/info",
+    element: <Info />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
+  },
+  {
+    index: true,
+    element: <Home />,
   },
   {
     path: "/register",

@@ -1,0 +1,19 @@
+.menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .menu.open {
+    transform: translateX(0);
+  }
+
+.md\:menu-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: auto;
+    position: relative;
+    background-color: transparent;
+    padding-top: 0 !important;
+  }
+  

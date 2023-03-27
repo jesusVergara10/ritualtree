@@ -1,13 +1,13 @@
-import Category from "./Category.js";
-import Product from "./Product.js";
+import Genre from "./Genre.js";
+import Album from "./Album.js";
 import User from "./User.js";
 
-Category.hasMany(Product, {
+Genre.hasMany(Album, {
     foreignKey: {
         allowNull: false
     },
     onDelete: "NO ACTION"
 })
-Product.belongsTo(Category)
+Album.belongsTo(Genre)
 
-export { Category, Product, User }
+export { Genre, Album, User }

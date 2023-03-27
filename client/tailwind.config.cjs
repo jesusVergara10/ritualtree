@@ -5,7 +5,19 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+       'archivo-black':['"Archivo Black"', 'sans-serif'],
+       'work-sans':['"Work Sans"', 'sans-serif']
+      },
+      colors: {
+        rtgreen: '#3DB763',
+        rtgrey: '#E8E8E8'
+      },
+      backgroundImage: {
+        'flowers': "url('/image/Flowers.png')"
+      }
+    },
   },
   plugins: [],
 }

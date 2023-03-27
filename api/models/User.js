@@ -15,6 +15,11 @@ class User extends Model {
 
 User.init(
   {
+    userName: {
+      type: Dt.STRING(50),
+      allowNull: false,
+      unique: true
+    },
     name: {
       type: Dt.STRING(50),
       allowNull: false,
@@ -64,6 +69,25 @@ User.beforeCreate(async (user) => {
   user.salt = salt;
   const passwordHash = await user.hashAuth(user.password, user.salt);
   user.password = passwordHash;
+});
+
+User.beforeUpdate(async (user) => {
+  try{
+    const results = await User.findOne({
+      where: {
+        id: user.id 
+      },
+    });
+    if(user.password !== results.password){
+      const salt = await bcrypt.genSalt();
+      user.salt = salt;
+      const passwordHash = await user.hashAuth(user.password, user.salt);
+      user.password = passwordHash;
+    }
+  }catch(error){
+    console.log(error)
+  }
+  
 });
 
 User.afterCreate(async (user) => {

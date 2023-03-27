@@ -18,6 +18,12 @@ app.use(morgan('tiny'))
 
 app.use("/api", routes)
 
+app.use((error, req, res, next)=>{
+    const message = `this is the unexpected field -> ${error.field}` 
+    console.log(message)
+    return res.status(500).send(message)
+})
+
 await db.sync({ force: false}).then(() => {
     app.listen(port, () => {
         console.log("servidor ok ")

@@ -1,54 +1,30 @@
-import React from 'react'
-import ShopAlbum from '../Components/ShopAlbum'
+import React from "react";
+import ShopAlbum from "../Components/ShopAlbum";
+import { useGetAllAlbumQuery } from "../store/service/albumService";
 
 const Shop = () => {
-
-    const albumsToDisplay = [
-        {
-            imageLink: "/public/Vinilos/AnnaVHW/LM_1.jpeg",
-            artistName: "Anna Von Hausswolf",
-            albumName: "Live at Montreaux",
-            price:100,
-            id:1
-        },
-        {
-            imageLink: "/public/Vinilos/AnnaVHW/LM_1.jpeg",
-            artistName: "Von Hausswolf",
-            albumName: "at Montreaux",
-            price:100,
-            id:2
-
-        },
-        {
-            imageLink: "/public/Vinilos/AnnaVHW/LM_1.jpeg",
-            artistName: "Anna Von ",
-            albumName: "Live",
-            price:100,
-            id:3
-
-        },
-        {
-            imageLink: "/public/Vinilos/AnnaVHW/LM_1.jpeg",
-            artistName: "A Hausswolf",
-            albumName: "Live Montreaux",
-            price:100,
-            id:4
-
-        }
-    ]
-
+  const { data: allAlbumsResponse, isLoading } = useGetAllAlbumQuery();
   return (
-    <div className='p-20'> 
-        <div className='flex flex-wrap justify-between'>
-            {albumsToDisplay.map((album, i)=>{
-                return (
-                <ShopAlbum albumInfo={album} key={i}>
-                </ShopAlbum>
-                )
-            })}
-        </div>
+    <div className="bg-rtgrey">
+      <div className="flex flex-wrap justify-evenly">
+        {allAlbumsResponse &&
+          allAlbumsResponse.results.map((album, i) => {
+            return (
+              <ShopAlbum
+                albumInfo={{
+                  artistName: album.artist,
+                  albumName: album.name,
+                  price: album.price,
+                  imageLink: `/api/album/${album.id}/image`,
+                  id: album.id,
+                }}
+                key={i}
+              ></ShopAlbum>
+            );
+          })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Shop
+export default Shop;

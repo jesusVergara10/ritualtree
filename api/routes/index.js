@@ -1,15 +1,15 @@
 import {Router} from "express"
 import userRoutes from "./userRoutes.js"
-import { productRoutes } from "./productRoutes.js"
-import categoryRoutes from "./categoryRoutes.js"
+import { albumRoutes } from "./albumRoutes.js"
+import genreRoutes from "./genreRoutes.js"
 
 
 
 const routes=Router()
 
 routes.use("/user",userRoutes)
-routes.use("/product",productRoutes)
-routes.use("/category",categoryRoutes)
+routes.use("/album",albumRoutes)
+routes.use("/genre",genreRoutes)
 
 
 export default routes
