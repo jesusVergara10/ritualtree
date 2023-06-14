@@ -15,7 +15,7 @@ const ShopAlbum = ({ albumInfo }) => {
 
   console.log(albumInfo);
   return (
-    <div className="m-1">
+    <div className="m-[.1rem] mt-16 -mb-8">
       <div>
         <Link to={{ pathname: "/album", search: "?id=" + albumInfo.id }}>
           <img src={albumInfo.imageLink} className="object-contain mb-2 h-80 w-80" />
@@ -35,7 +35,7 @@ const ShopAlbum = ({ albumInfo }) => {
       <div className="text-rtgreen text-sm font-bold font-archivo-black-sans uppercase">
         {albumInfo.albumName}
       </div>
-      <div className="text-rtgreen text-sm mt-3 font-work-sans uppercase">
+      <div className="text-rtgreen text-sm font-work-sans uppercase">
         ${albumInfo.price}
       </div>
     </div>

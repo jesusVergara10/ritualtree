@@ -54,6 +54,23 @@ const EditProfile = () => {
     logout()
     navigate("/")
   }
+  const registerTheme = {
+    display: "flex",
+    height: "100%",
+    width: "100%",
+    justifyContent: "center",
+    alignContent: "flex-end",
+    mt:{xs:"50%", md:"0%"}
+  }
+
+  const eliminarCuentaBotonTheme = {
+    display: "flex",
+    width: {md:"110px"},
+    height: {md:"45px"},
+    justifyContent: "center",
+    alignContent: "center",
+    mt: {md:"10px", xs:"20px"},
+  }
 
   return (
     <>
@@ -61,13 +78,7 @@ const EditProfile = () => {
       <ThemeProvider theme={PrimaryMainTheme}>
         <Grid
           container
-          sx={{
-            display: "flex",
-            height: "100%",
-            width: "100%",
-            justifyContent: "center",
-            alignContent: "flex-end",
-          }}
+          sx={registerTheme}
         >
           <Grid sx={{ ml: 2, mb: 39 }}>
             <form onSubmit={handleSubmit(submit)}>
@@ -77,7 +88,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder="Name"
                     {...register("name")}
-                    className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[25vw] text-rtgreen uppercase"
+                    className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 md:w-[25vw] md:text-base text-sm text-rtgreen uppercase"
                   />
                 </Grid>
                 <Grid>
@@ -85,7 +96,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder="Last Name"
                     {...register("lastName")}
-                    className="bg-transparent border-solid border-rtgreen border-b-2 font-work-sans w-[25vw] text-rtgreen uppercase"
+                    className="bg-transparent border-solid border-rtgreen border-b-2 font-work-sans md:w-[25vw] md:text-base text-sm text-rtgreen uppercase"
                   />
                 </Grid>
                 <Grid>
@@ -93,7 +104,7 @@ const EditProfile = () => {
                     type="email"
                     placeholder="Email"
                     {...register("email")}
-                    className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[25vw] text-rtgreen uppercase"
+                    className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 md:w-[25vw] md:text-base text-sm text-rtgreen uppercase"
                   />
                 </Grid>
                 <Grid>
@@ -101,7 +112,7 @@ const EditProfile = () => {
                     type="password"
                     placeholder="Password"
                     {...register("password")}
-                    className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[25vw] text-rtgreen uppercase"
+                    className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 md:w-[25vw] md:text-base text-sm text-rtgreen uppercase"
                   />
                 </Grid>
                 <Grid
@@ -123,15 +134,8 @@ const EditProfile = () => {
               </Grid>
             </form>
             <Grid container sx={{display: "flex", justifyContent: "flex-start", alignContent: "center"}}>
-              <Grid sx={{
-                    display: "flex",
-                    width: 110,
-                    height: 45,
-                    justifyContent: "center",
-                    alignContent: "center",
-                    mt: 1,
-                  }}>
-                <button className="text-rtgreen text-[1vw] underline" 
+              <Grid sx={eliminarCuentaBotonTheme}>
+                <button className="text-rtgreen md:text-[1vw] text-[4vw] underline" 
                 onClick={()=>deleteUserHandle()}
                 >Eliminar mi cuenta</button>
               </Grid>

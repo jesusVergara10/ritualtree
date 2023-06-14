@@ -41,7 +41,7 @@ const Login = () => {
             maxLength: 50,
           })}
           placeholder="Username or Email"
-          className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[50vw] text-rtgreen uppercase"
+          className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[50vw]  md:text-base text-sm text-rtgreen uppercase"
         />
         {errors?.email?.type === "pattern" && <p>Pone un email con onda</p>}
         {errors?.email?.type === "required" && (
@@ -57,7 +57,7 @@ const Login = () => {
           type="password"
           {...register("password")}
           placeholder="Password"
-          className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[50vw] text-rtgreen uppercase"
+          className="bg-transparent border-solid border-rtgreen font-work-sans border-b-2 w-[50vw]  md:text-base text-sm text-rtgreen uppercase"
         />
         <div className="flex bg-rtgreen h-8 w-20 justify-center">
         <button className="text-white font-archivo-black text-sm font-work-sans font-bold uppercase">

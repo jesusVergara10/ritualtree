@@ -25,7 +25,7 @@ const Search = () => {
   };
 
   return (
-    <div className="w-screen h-screen m-auto bg-rtgreen">
+    <div className="m-auto bg-rtgreen">
       <HeaderThree />
       {/* <input type="search"></input> */}
       <Grid container sx={{ height: "40%" }}>

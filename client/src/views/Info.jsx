@@ -9,7 +9,7 @@ const Info = () => {
       <Grid container sx={{ justifyContent: "space-between", pl: 2 }}>
         <Grid item xs={12} md={4}>
           <div className="flex flex-col gap-2">
-            <p className="font-work-sans">
+            <p className="font-work-sans w-[93vw] md:w-auto">
               The Sacred Tree provides nourishment in its fruits, encouraging
               positive inter-relationships among human beings within their
               physical and spiritual worlds. The leaves of the tree represent

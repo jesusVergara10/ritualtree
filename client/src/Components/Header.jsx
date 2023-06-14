@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogoutMutation, useMeQuery } from "../store/service/userService";
 
@@ -10,29 +10,41 @@ function Header() {
     logout();
     navigate("/");
   };
+
+  const [menuOpen, setMenuOpen] = useState(false);
+const miEstilo =  (menuOpen ? "opacity-100" : "opacity-0") +
+" flex flex-wrap md:bg-transparent bg-white md:opacity-100 transition-all ease-in duration-500 w-[50vw] md:w-[100vw] md:flex-row md:justify-between md:h-16 "
+  const menu = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
-    <nav className="fixed top-0 left-0 w-full z-10 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="text-rtgreen text-lg font-archivo-black">
-              RITUAL TREE
-            </Link>
+    <nav className="fixed md:top-0 md:left-0 md:w-full md:z-10 bg-transparent">
+      <div className="md:max-w-7xl md:mx-auto md:px-4 flex ">
+        <Link to="/" className="text-rtgreen text-lg font-archivo-black">
+          RITUAL TREE
+        </Link>
+        <div className="text-3x1 cursor-pointer md:hidden block">
+          <ion-icon name="menu" onClick={menu}></ion-icon>
+        </div>
+        <div
+          className={miEstilo}
+        >
+          <div className="md:flex md:items-center md:flex-row md:static flex flex-col">
             <Link
               to="/search"
-              className="ml-4 text-xs text-rtgreen font-work-sans"
+              className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans"
             >
               SEARCH
             </Link>
             <Link
               to="/shop"
-              className="ml-4 text-xs text-rtgreen font-work-sans"
+              className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans"
             >
               SHOP
             </Link>
             <Link
               to="/info"
-              className="ml-4 text-xs text-rtgreen font-work-sans"
+              className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans"
             >
               INFO
             </Link>
@@ -40,7 +52,7 @@ function Header() {
             {currentUser?.result?.role === "admin" && (
               <Link
                 to="/admin/productmanagment"
-                className="ml-4 text-xs text-rtgreen font-work-sans"
+                className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans"
               >
                 PRODUCT MANAGEMENT
               </Link>
@@ -49,20 +61,23 @@ function Header() {
             {currentUser?.result?.role === "admin" && (
               <Link
                 to="/admin/categorymanagment"
-                className="ml-4 text-xs text-rtgreen font-work-sans"
+                className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans"
               >
                 CATEGORY MANAGEMENT
               </Link>
             )}
           </div>
-          <div className="flex items-center">
-            <Link to="/cart" className="text-rtgreen text-xs font-work-sans">
+          <div className="md:flex md:items-center md:flex-row flex flex-col">
+            <Link
+              to="/cart"
+              className="md:ml-4 md:my-0 mx-4 my-4 text-rtgreen text-xs font-work-sans"
+            >
               CART
             </Link>
             {currentUser?.result ? (
               <button
                 onClick={handleClick}
-                className="ml-4 font-work-sans text-xs text-rtgreen uppercase"
+                className="md:ml-4 md:my-0 mx-4 my-4 font-work-sans text-xs text-rtgreen uppercase"
               >
                 Logout
               </button>
@@ -70,14 +85,14 @@ function Header() {
               <>
                 <Link
                   to="/login"
-                  className="ml-4 text-xs text-rtgreen font-work-sans"
+                  className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans"
                 >
                   {" "}
                   LOGIN{" "}
                 </Link>
                 <Link
                   to="/register"
-                  className="ml-4 text-xs text-rtgreen font-work-sans"
+                  className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans"
                 >
                   {" "}
                   REGISTER{" "}
@@ -87,7 +102,7 @@ function Header() {
             {currentUser?.result && (
               <Link
                 to={"/editprofile"}
-                className="ml-4 text-xs text-rtgreen font-work-sans uppercase"
+                className="md:ml-4 md:my-0 mx-4 my-4 text-xs text-rtgreen font-work-sans uppercase"
               >
                 Hola {currentUser.result.name}
               </Link>

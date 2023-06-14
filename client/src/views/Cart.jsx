@@ -23,13 +23,14 @@ const Cart = () => {
         borderColor: "primary.main",
         "& > div": {
           borderBottom: "var(--Grid-borderWidth) solid",
-          borderColor: "primary.main"
+          borderColor: "primary.main",
+          mt:"5%",
         },
       }}
     >
       {cart.cart.map((album, i) => {
         return (
-          <Grid container xs={12} sx={{height:'32vh'}} key={i}>
+          <Grid container xs={12} key={i}>
             <CartAlbum
               cartAlbumInfo={album}
               onRemove={() => removeAlbum(album)}

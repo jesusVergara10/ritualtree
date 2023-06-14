@@ -15,7 +15,7 @@ const ShopAlbum = ({ albumInfo }) => {
 
   console.log(albumInfo);
   return (
-    <div className="m-1 mr-6">
+    <div className="m-[.1rem] mt-16 -mb-8">
       <div>
         <Link to={{ pathname: "/album", search: "?id=" + albumInfo.id }}>
           <img src={albumInfo.imageLink} className="object-contain h-80 w-80 mb-2" />
